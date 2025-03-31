@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crocodile Facts</title>
+    <style>
+        /* styles.css */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e0f7fa;
+            color: #004d40;
+            text-align: center;
+        }
+
+        .container {
+            margin-top: 50px;
+        }
+
+        .crocodile-button {
+            background-color: #00796b;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            margin: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .crocodile-button:hover {
+            background-color: #004d40;
+            transform: scale(1.05);
+        }
+
+        #factDisplay {
+            margin-top: 20px;
+            font-size: 1.2em;
+            padding: 10px;
+            border: 1px solid #00796b;
+            border-radius: 5px;
+            background-color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Crocodile Facts</h1>
+        <button id="factButton" class="crocodile-button">Show Random Fact</button>
+        <button id="shareButton" class="crocodile-button">Share to Twitter</button>
+        <p id="factDisplay"></p>
+    </div>
+    <script>
+        // script.js
+        const facts = [
+            "Crocodiles can hold their breath underwater for over an hour.",
+            "They have the strongest bite of any animal, with a force of over 3,700 pounds.",
+            "Crocodiles can live for over 70 years in the wild.",
+            "They are more closely related to birds than to other reptiles.",
+            "Crocodiles can run up to 15 miles per hour on land for short distances.",
+            "Their eyes have a special membrane that allows them to see underwater.",
+            "Crocodiles can regrow lost teeth, replacing them throughout their lives.",
+            "They communicate using a variety of sounds, including growls and hisses.",
+            "Crocodiles are cold-blooded and rely on external heat sources to regulate body temperature.",
+            "Some species can swim at speeds of up to 20 miles per hour."
+        ];
+
+        document.getElementById('factButton').addEventListener('click', function() {
+            const randomIndex = Math.floor(Math.random() * facts.length);
+            document.getElementById('factDisplay').innerText = facts[randomIndex];
+        });
+
+        document.getElementById('shareButton').addEventListener('click', function() {
+            const fact = document.getElementById('factDisplay').innerText;
+            const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(fact)}`;
+            window.open(twitterUrl, '_blank');
+        });
+    </script>
+</body>
+</html>
